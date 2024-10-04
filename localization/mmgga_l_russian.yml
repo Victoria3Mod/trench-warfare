@@ -1,0 +1,37 @@
+﻿l_russian:
+ 
+mobilization_option_handcranked_machinegunners: "Handcranked Machinegunners"
+mobilization_option_handcranked_machinegunners_desc: "Use handcranked machinegunners to effectively strengthen positional defenses."
+
+character_battle_condition_charge_after_a_successful_bombardment_mult: "[GetBattleCondition('battle_condition_charge_after_a_successful_bombardment').GetName]$modifier_character_battle_condition_suffix$"
+character_battle_condition_charge_after_a_successful_bombardment_mult_desc: "$modifier_character_battle_condition_desc_prefix$[GetBattleCondition('battle_condition_charge_after_a_successful_bombardment').GetName]$modifier_character_battle_condition_desc_suffix$"
+
+character_battle_condition_chemical_weapons_attack_and_bombardment_mult: "[GetBattleCondition('battle_condition_chemical_weapons_attack_and_bombardment').GetName]$modifier_character_battle_condition_suffix$"
+character_battle_condition_chemical_weapons_attack_and_bombardment_mult_desc: "$modifier_character_battle_condition_desc_prefix$[GetBattleCondition('battle_condition_chemical_weapons_attack_and_bombardment').GetName]$modifier_character_battle_condition_desc_suffix$"
+
+character_battle_condition_dug_in_with_machinegun_mult: "[GetBattleCondition('battle_condition_dug_in_with_machinegun').GetName]$modifier_character_battle_condition_suffix$"
+character_battle_condition_dug_in_with_machinegun_mult_desc: "$modifier_character_battle_condition_desc_prefix$[GetBattleCondition('battle_condition_dug_in_with_machinegun').GetName]$modifier_character_battle_condition_desc_suffix$"
+
+battle_condition_charge_after_a_successful_bombardment: "Successful Shelling Of Trenches"
+battle_condition_charge_after_a_successful_bombardment_desc: "For a successful shelling, rapid heat dissipation of artillery, accurate observation of observers, and accurate shooting specifications of the firing command center are necessary, and even if all preparations are completed, it is not an easy task because we have to timing just before the infantry charge."
+
+battle_condition_dug_in_with_machinegun: "Machine Gun Trench Entry"
+battle_condition_dug_in_with_machinegun_desc: "The commander directly oversaw the construction of the field defense facility."
+
+battle_condition_chemical_weapons_attack: "Spraying Chemical Weapons"
+battle_condition_chemical_weapons_attack_desc: "We succeeded in spraying effective chemical weapons considering the weather and wind direction. I just pray that the weather forecast and the wind will not change."
+battle_condition_chemical_weapons_attack_2: "Spraying Chemical Weapons"
+battle_condition_chemical_weapons_attack_2_desc: "We succeeded in spraying effective chemical weapons considering the weather and wind direction. I just pray that the weather forecast and the wind will not change."
+
+battle_condition_chemical_weapons_attack_and_bombardment: "Chemical Weapons And Trench Shelling"
+battle_condition_chemical_weapons_attack_and_bombardment_desc: "To deal with an enemy against a chemical weapon, it is essential not only to spray chemical weapons in the weather and wind direction, but also to precisely target the timing of the infantry's charge."
+battle_condition_chemical_weapons_attack_and_bombardment_2: "Chemical Weapons And Trench Shelling"
+battle_condition_chemical_weapons_attack_and_bombardment_2_desc: "To deal with an enemy against a chemical weapon, it is essential not only to spray chemical weapons in the weather and wind direction, but also to precisely target the timing of the infantry's charge."
+
+battle_condition_chemical_weapons_defense: "Wearing A Gas Mask"
+battle_condition_chemical_weapons_defense_desc: "It is not easy to quickly wear protective gear in the trenches after enemy chemical weapons are sprayed."
+battle_condition_chemical_weapons_defense_2: "Wearing A Gas Mask"
+battle_condition_chemical_weapons_defense_2_desc: "It is not easy to quickly wear protective gear in the trenches after enemy chemical weapons are sprayed."
+
+battle_condition_primitive_combined_arms: "Primitive Military Joint"
+battle_condition_primitive_combined_arms_desc: "Shortly after artillery's attack-ready fire, it is effective but difficult to use for infantry and armoured forces to break through enemy lines by organically performing their duties with each other."
