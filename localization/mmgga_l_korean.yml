@@ -1,0 +1,37 @@
+﻿l_korean:
+
+ mobilization_option_handcranked_machinegunners: "수동 장전 기관총 사수"
+ mobilization_option_handcranked_machinegunners_desc: "수동 장전 기관총을 사용해 효과적으로 진지 방어를 강화합니다."
+ 
+ character_battle_condition_charge_after_a_successful_bombardment_mult: "[GetBattleCondition('battle_condition_charge_after_a_successful_bombardment').GetName]$modifier_character_battle_condition_suffix$"
+ character_battle_condition_charge_after_a_successful_bombardment_mult_desc: "$modifier_character_battle_condition_desc_prefix$[GetBattleCondition('battle_condition_charge_after_a_successful_bombardment').GetName]$modifier_character_battle_condition_desc_suffix$"
+
+ character_battle_condition_chemical_weapons_attack_and_bombardment_mult: "[GetBattleCondition('battle_condition_chemical_weapons_attack_and_bombardment').GetName]$modifier_character_battle_condition_suffix$"
+ character_battle_condition_chemical_weapons_attack_and_bombardment_mult_desc: "$modifier_character_battle_condition_desc_prefix$[GetBattleCondition('battle_condition_chemical_weapons_attack_and_bombardment').GetName]$modifier_character_battle_condition_desc_suffix$"
+
+ character_battle_condition_dug_in_with_machinegun_mult: "[GetBattleCondition('battle_condition_dug_in_with_machinegun').GetName]$modifier_character_battle_condition_suffix$"
+ character_battle_condition_dug_in_with_machinegun_mult_desc: "$modifier_character_battle_condition_desc_prefix$[GetBattleCondition('battle_condition_dug_in_with_machinegun').GetName]$modifier_character_battle_condition_desc_suffix$"
+
+ battle_condition_charge_after_a_successful_bombardment: "성공적인 참호 포격"
+ battle_condition_charge_after_a_successful_bombardment_desc: "성공적인 포격이 이루어지기 위해서는 포병들의 신속한 방열, 관측병의 정확한 관측제원 확보, 사격지휘소의 정확한 사격제원 산출이 필요하며, 모든 준비를 다 끝냈다고 하더라도 보병들의 돌격 직전에 타이밍을 맞춰야 하므로 쉽지 않은 작업입니다."
+
+ battle_condition_dug_in_with_machinegun: "기관총 참호 진입"
+ battle_condition_dug_in_with_machinegun_desc: "지휘관이 야전 방어 설비 건설을 직접 감독하였습니다."
+
+ battle_condition_chemical_weapons_attack: "화학무기 살포"
+ battle_condition_chemical_weapons_attack_desc: "날씨와 풍향을 고려하여 효과적인 화학 무기 살포에 성공했습니다. 일기예보와 바람이 바뀌지 않기를 기도할 뿐입니다."
+ battle_condition_chemical_weapons_attack_2: "화학무기 살포"
+ battle_condition_chemical_weapons_attack_2_desc: "날씨와 풍향을 고려하여 효과적인 화학 무기 살포에 성공했습니다. 일기예보와 바람이 바뀌지 않기를 기도할 뿐입니다."
+
+ battle_condition_chemical_weapons_attack_and_bombardment: "성공적인 화학 무기와 참호 포격"
+ battle_condition_chemical_weapons_attack_and_bombardment_desc: "화학 무기에 대비한 적을 상대 하기 위해서는 날씨와 풍향에 맞는 화학무기의 살포 뿐 아니라 보병들의 돌격 타이밍에 맞춘 정밀한 포격이 반드시 필요합니다."
+ battle_condition_chemical_weapons_attack_and_bombardment_2: "성공적인 화학 무기와 참호 포격"
+ battle_condition_chemical_weapons_attack_and_bombardment_2_desc: "화학 무기에 대비한 적을 상대 하기 위해서는 날씨와 풍향에 맞는 화학무기의 살포 뿐 아니라 보병들의 돌격 타이밍에 맞춘 정밀한 포격이 반드시 필요합니다."
+
+ battle_condition_chemical_weapons_defense: "방독면 착용"
+ battle_condition_chemical_weapons_defense_desc: "적의 화학 무기가 살포된 후, 참호 속에서 재빨리 보호 장구를 착용하는 것은 쉽지 않은 일입니다."
+ battle_condition_chemical_weapons_defense_2: "방독면 착용"
+ battle_condition_chemical_weapons_defense_desc_2: "적의 화학 무기가 살포된 후, 참호 속에서 재빨리 보호 장구를 착용하는 것은 쉽지 않은 일입니다."
+
+ battle_condition_primitive_combined_arms: "원시적인 제병합동"
+ battle_condition_primitive_combined_arms_desc: "포병들의 공격준비사격 직후, 보병과 기갑 전력이 서로 유기적으로 임무 수행하여 적의 방어선 돌파하는 것은 효과적이지만 구사하기 어려운 전술입니다."

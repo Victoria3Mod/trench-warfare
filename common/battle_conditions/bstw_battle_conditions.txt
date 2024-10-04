@@ -1,0 +1,772 @@
+################################# Modified Vanilla battle_condition ##############################
+
+
+battle_condition_dug_in = { #defender only
+	icon = "gfx/interface/icons/battle_conditions/battle_condition_dug_in.dds"
+
+	modifier = {
+		unit_morale_loss_mult = -0.1
+		unit_army_defense_mult = 0.2
+	}
+	
+	possible = {
+		scope:is_advancing_side = no
+		exists = scope:character
+		scope:character = { #mod
+				has_role = general 
+				this.commander_military_formation = {
+					NOR = {
+						has_mobilization_option = mobilization_option:mobilization_option_machinegunners
+						has_mobilization_option = mobilization_option:mobilization_option_handcranked_machinegunners
+					}
+				}
+		}
+		NOT = { has_battle_condition = battle_condition_aggressive_maneuver }
+	}
+
+
+	weight = {
+		value = 1
+		multiply = {
+			value = 1
+			scope:character = {
+				add = modifier:character_battle_condition_dug_in_mult
+			}
+			min = 0
+		}
+		multiply = {
+			value = 1
+			scope:character = {
+					has_role = general 
+					this.commander_military_formation = {
+						add = modifier:battle_condition_dug_in_mult
+					}
+				}
+			min = 0
+		}
+		if = {
+			limit = {
+				has_battle_condition = battle_condition_camouflaged
+			}
+			add = 2
+		}
+		if = {
+			limit = {
+				has_battle_condition = battle_condition_charted_terrain
+			}
+			add = 2
+		}
+	}
+}
+
+battle_condition_pursuit = {
+	icon = "gfx/interface/icons/battle_conditions/battle_condition_pursuit.dds"
+
+	modifier = {
+		unit_morale_loss_mult = -1
+		battle_combat_width_mult = 10
+	}
+	
+	instant_switch = {
+		NOR = { 
+			has_battle_condition = battle_condition_panicked_retreat
+			has_battle_condition = battle_condition_controlled_retreat
+		}
+		opposite_battle_side = {
+			NOR = { has_battle_condition = battle_condition_dug_in_with_machinegun  #mod
+					has_battle_condition = battle_condition_chemical_weapons_defense
+					}
+		}
+		current_manpower > {
+			value = opposite_battle_side.current_manpower
+			multiply = {
+				if = {
+					limit = {
+						opposite_battle_side = {
+							has_battle_condition = battle_condition_panicked_retreat
+						}
+					}
+					add = 2
+				}
+				else_if = {
+					limit = {
+						opposite_battle_side = {
+							has_battle_condition = battle_condition_controlled_retreat
+						}
+					}
+					add = 4
+				}
+				else = {
+					add = 10
+				}
+			}
+		}
+	}
+	
+	weight = 1
+}
+
+
+################################### machinegun and againsts ####################################
+
+battle_condition_dug_in_with_machinegun = { #defender only
+	icon = "gfx/interface/icons/battle_conditions/battle_condition_dug_in_with_machinegun.dds"
+
+	modifier = {
+		unit_morale_loss_mult = -0.1
+		unit_army_defense_mult = 50.0
+		unit_kill_rate_add = 1.0
+	}
+	
+	possible = {
+		scope:is_advancing_side = no
+		exists = scope:character
+		scope:character = {
+			has_role = general 
+			this.commander_military_formation = {
+				OR = {
+					has_mobilization_option = mobilization_option:mobilization_option_machinegunners
+					has_mobilization_option = mobilization_option:mobilization_option_handcranked_machinegunners
+				}
+			}
+		}
+	}
+
+	weight = {
+		value = 0
+		if = {
+			limit = {
+				scope:character = {
+					has_role = general 
+					this.commander_military_formation = {
+							has_mobilization_option = mobilization_option:mobilization_option_handcranked_machinegunners
+					}
+				}
+			}
+			add = 5
+		}
+		if = {
+			limit = {
+				scope:character = {
+					has_role = general 
+					this.commander_military_formation = {
+							has_mobilization_option = mobilization_option:mobilization_option_machinegunners
+					}
+				}
+			}
+			add = 50
+		}
+		multiply = {
+			value = 1
+			scope:character = {
+				add = modifier:character_battle_condition_dug_in_with_machinegun
+			}
+			min = 0
+		}
+		multiply = {
+			value = 1
+			scope:character = {
+					has_role = general 
+					this.commander_military_formation = {
+						add = modifier:battle_condition_dug_in_mult #mod compability army need supplies
+					}
+				}
+			min = 0
+		}
+		if = {
+			limit = {
+				has_battle_condition = battle_condition_dug_in_with_machinegun
+			}
+			multiply = 10
+		}
+	}
+}
+
+battle_condition_charge_after_a_successful_bombardment = {
+	icon = "gfx/interface/icons/battle_conditions/battle_condition_charge_after_a_successful_bombardment.dds"
+
+	modifier = {
+		unit_army_offense_mult = 45.0
+		unit_kill_rate_add = 0.3
+	}
+
+	possible = {
+		scope:is_advancing_side = yes
+		exists = scope:character
+		opposite_battle_side = {
+			has_battle_condition = battle_condition_dug_in_with_machinegun
+		}
+	}
+
+	weight = {
+		value = 0
+		if = {
+			limit = {
+				scope:character = { 
+					has_role = general
+					commander_military_formation = {
+						formation_army_unit_type_fraction = {  
+							target = unit_type:combat_unit_type_shrapnel_artillery
+							value >= 0.1  
+						}
+					}
+				}
+			}
+			add = 30
+		}
+		if = {
+			limit = {
+				scope:character = { 
+					has_role = general
+					commander_military_formation = {
+						formation_army_unit_type_fraction = {  
+							target = unit_type:combat_unit_type_siege_artillery
+							value >= 0.1
+						}
+					}
+				}
+			}
+			add = 35
+		}
+		multiply = {
+			value = 1
+			scope:character = {
+				add = modifier:character_battle_condition_charge_after_a_successful_bombardment_mult
+			}
+			min = 0
+		}
+		if = {
+			limit = {
+				scope:character = {
+					has_role = general 
+					this.commander_military_formation = {
+						has_mobilization_option = mobilization_option:mobilization_option_chemical_weapons
+					}
+				}
+			}
+			multiply = 0.75
+		}
+		if = {
+			limit = {
+				scope:character = { 
+					has_role = general
+					OR = {
+						commander_military_formation = {
+							formation_army_unit_type_fraction = {  
+								target = unit_type:combat_unit_type_mechanized_infantry
+								value >= 0.1  
+							}
+						}
+						commander_military_formation = {
+							formation_army_unit_type_fraction = {  
+								target = unit_type:combat_unit_type_heavy_tank
+								value >= 0.1
+							}
+						}
+						commander_military_formation = {
+							formation_army_unit_type_fraction = {  
+								target = unit_type:combat_unit_type_light_tanks
+								value >= 0.1
+							}
+						}
+					}
+				}
+			}
+			multiply = 0.50
+		}
+		if = {
+			limit = {
+				has_battle_condition = battle_condition_primitive_combined_arms
+			}
+			multiply = 0.5
+		}
+		if = {
+			limit = {
+				opposite_battle_side = {
+					has_battle_condition = battle_condition_dug_in_with_machinegun
+				}
+			}
+			multiply = 2
+		}
+	}
+}
+
+battle_condition_primitive_combined_arms = {
+	icon = "gfx/interface/icons/battle_conditions/battle_condition_primitive_combined_arms.dds"
+
+	modifier = {
+		unit_army_offense_mult = 55.0
+		unit_kill_rate_add = 0.3
+	}
+
+	possible = {
+		scope:is_advancing_side = yes
+		exists = scope:character
+		opposite_battle_side = {
+			has_battle_condition = battle_condition_dug_in_with_machinegun
+		}
+	}
+
+	weight = {
+		value = 0
+		if = {
+			limit = {
+				scope:character = { 
+					has_role = general
+					commander_military_formation = {
+						formation_army_unit_type_fraction = {  
+							target = unit_type:combat_unit_type_mechanized_infantry
+							value >= 0.1  
+						}
+					}
+				}
+			}
+			add = 30
+		}
+		if = {
+			limit = {
+				scope:character = { 
+					has_role = general
+					commander_military_formation = {
+						formation_army_unit_type_fraction = {  
+							target = unit_type:combat_unit_type_heavy_tank
+							value >= 0.1
+						}
+					}
+				}
+			}
+			add = 60
+		}
+		if = {
+			limit = {
+				scope:character = { 
+					has_role = general
+					commander_military_formation = {
+						formation_army_unit_type_fraction = {  
+							target = unit_type:combat_unit_type_light_tanks
+							value >= 0.1
+						}
+					}
+				}
+			}
+			add = 30
+		}
+		multiply = {
+			value = 1
+			scope:character = {
+				add = modifier:character_battle_condition_charge_after_a_successful_bombardment_mult
+			}
+			min = 0
+		}
+		if = {
+			limit = {
+				opposite_battle_side = {
+					has_battle_condition = battle_condition_dug_in_with_machinegun
+				}
+			}
+			multiply = 4
+		}
+		if = {
+			limit = {
+				has_battle_condition = battle_condition_primitive_combined_arms
+			}
+			multiply = 10.0
+		}
+	}
+}
+
+
+############################ GAS Against Trench #############################
+
+battle_condition_chemical_weapons_attack = {                                                                      
+	icon = "gfx/interface/icons/battle_conditions/battle_condition_chemical_weapons_attack.dds"
+
+	modifier = {
+		unit_army_offense_mult = 70.0
+		unit_kill_rate_add = 2.0
+	}
+	
+	possible = {
+		scope:is_advancing_side = yes
+		exists = scope:character
+		scope:character = {
+			has_role = general 
+			this.commander_military_formation = {
+            	has_mobilization_option = mobilization_option:mobilization_option_chemical_weapons
+          	}
+		}
+		opposite_battle_side = {
+			has_battle_condition = battle_condition_dug_in_with_machinegun
+		}
+	}
+
+	weight = {
+		value = 0
+		if = {
+			limit = {
+				scope:character = {
+					has_role = general 
+					this.commander_military_formation = {
+						has_mobilization_option = mobilization_option:mobilization_option_chemical_weapons
+					}
+				}
+			}
+			add = 15
+		}
+		if = {
+			limit = {
+				scope:character = { 
+					has_role = general
+					commander_military_formation = {
+						formation_army_unit_type_fraction = {  
+							target = unit_type:combat_unit_type_mechanized_infantry
+							value >= 0.1  
+						}
+					}
+				}
+			}
+			multiply = 0.5
+		}
+		if = {
+			limit = {
+				scope:character = { 
+					has_role = general
+					commander_military_formation = {
+						formation_army_unit_type_fraction = {  
+							target = unit_type:combat_unit_type_heavy_tank
+							value >= 0.1
+						}
+					}
+				}
+			}
+			multiply = 0.5
+		}
+		if = {
+			limit = {
+				scope:character = { 
+					has_role = general
+					commander_military_formation = {
+						formation_army_unit_type_fraction = {  
+							target = unit_type:combat_unit_type_light_tanks
+							value >= 0.1
+						}
+					}
+				}
+			}
+			multiply = 0.5
+		}
+		if = {
+			limit = {
+				opposite_battle_side = {
+					has_battle_condition = battle_condition_dug_in_with_machinegun
+				}
+			}
+			multiply = 2
+		}
+		if = {
+			limit = {
+				has_battle_condition = battle_condition_primitive_combined_arms
+			}
+			multiply = 0.5
+		}
+	}
+}
+
+battle_condition_chemical_weapons_defense = {
+	icon = "gfx/interface/icons/battle_conditions/battle_condition_chemical_weapons_defense.dds"
+
+	modifier = {
+		unit_army_defense_mult = 120.0
+		unit_morale_loss_mult = -0.1
+		unit_recovery_rate_add = 1.5
+		unit_kill_rate_add = 1.0
+	}
+	
+	instant_switch = {
+			scope:character = {
+				has_role = general 
+				this.commander_military_formation = {
+					has_mobilization_option = mobilization_option:mobilization_option_chemical_weapons
+				}
+			}
+			opposite_battle_side = {
+				OR = {
+					has_battle_condition = battle_condition_chemical_weapons_attack
+					has_battle_condition = battle_condition_chemical_weapons_attack_and_bombardment
+				}
+			}
+	}
+
+	weight = 1
+}
+
+
+battle_condition_chemical_weapons_attack_and_bombardment = {
+	icon = "gfx/interface/icons/battle_conditions/battle_condition_chemical_weapons_attack_and_bombardment.dds"
+
+	modifier = {
+		unit_army_offense_mult = 115.0
+		unit_kill_rate_add = 2.0
+	}
+	
+	possible = {
+		scope:is_advancing_side = yes
+		exists = scope:character
+		scope:character = {
+			has_role = general 
+			this.commander_military_formation = {
+            	has_mobilization_option = mobilization_option:mobilization_option_chemical_weapons
+          	}
+		}
+		opposite_battle_side = {
+			has_battle_condition = battle_condition_chemical_weapons_defense
+		}
+	}
+
+	weight = {
+		value = 0
+		if = {
+			limit = {
+				scope:character = { 
+					has_role = general
+					commander_military_formation = {
+						formation_army_unit_type_fraction = {  
+							target = unit_type:combat_unit_type_shrapnel_artillery
+							value >= 0.1 
+						}
+					}
+				}
+			}
+			add = 30
+		}
+		if = {
+			limit = {
+				scope:character = { 
+					has_role = general
+					commander_military_formation = {
+						formation_army_unit_type_fraction = {  
+							target = unit_type:combat_unit_type_siege_artillery
+							value >= 0.1
+						}
+					}
+				}
+			}
+			add = 35
+		}
+		multiply = {
+			value = 1
+			scope:character = {
+				add = modifier:character_battle_condition_chemical_weapons_attack_and_bombardment_mult
+			}
+			min = 0
+		}
+		if = {
+			limit = {
+				opposite_battle_side = {
+					has_battle_condition = battle_condition_chemical_weapons_defense
+				}
+			}
+			multiply = 2
+		}
+		if = {
+			limit = {
+				has_battle_condition = battle_condition_primitive_combined_arms
+			}
+			multiply = 0.5
+		}
+	}
+}
+
+
+########################### Gas against no trench ########################################
+
+battle_condition_chemical_weapons_attack_2 = {                                                                      
+	icon = "gfx/interface/icons/battle_conditions/battle_condition_chemical_weapons_attack.dds"
+
+	modifier = {
+		unit_army_offense_mult = 7.0
+		unit_kill_rate_add = 2.0
+	}
+	
+	possible = {
+		scope:is_advancing_side = yes
+		exists = scope:character
+		scope:character = {
+			has_role = general 
+			this.commander_military_formation = {
+            	has_mobilization_option = mobilization_option:mobilization_option_chemical_weapons
+          	}
+		}
+		opposite_battle_side = {
+			NOT = { has_battle_condition = battle_condition_dug_in_with_machinegun }
+		}
+	}
+
+	weight = {
+		value = 0
+		if = {
+			limit = {
+				scope:character = {
+					has_role = general 
+					this.commander_military_formation = {
+						has_mobilization_option = mobilization_option:mobilization_option_chemical_weapons
+					}
+				}
+			}
+			add = 15
+		}
+		if = {
+			limit = {
+				scope:character = { 
+					has_role = general
+					commander_military_formation = {
+						formation_army_unit_type_fraction = {  
+							target = unit_type:combat_unit_type_mechanized_infantry
+							value >= 0.1  
+						}
+					}
+				}
+			}
+			multiply = 0.5
+		}
+		if = {
+			limit = {
+				scope:character = { 
+					has_role = general
+					commander_military_formation = {
+						formation_army_unit_type_fraction = {  
+							target = unit_type:combat_unit_type_heavy_tank
+							value >= 0.1
+						}
+					}
+				}
+			}
+			multiply = 0.5
+		}
+		if = {
+			limit = {
+				scope:character = { 
+					has_role = general
+					commander_military_formation = {
+						formation_army_unit_type_fraction = {  
+							target = unit_type:combat_unit_type_light_tanks
+							value >= 0.1
+						}
+					}
+				}
+			}
+			multiply = 0.5
+		}
+		if = {
+			limit = {
+				has_battle_condition = battle_condition_primitive_combined_arms
+			}
+			multiply = 0.5
+		}
+	}
+}
+
+battle_condition_chemical_weapons_defense_2 = {
+	icon = "gfx/interface/icons/battle_conditions/battle_condition_chemical_weapons_defense.dds"
+
+	modifier = {
+		unit_army_defense_mult = 12.0
+		unit_morale_loss_mult = -0.1
+		unit_recovery_rate_add = 1.5
+		unit_kill_rate_add = 1.0
+	}
+	
+	instant_switch = {
+			scope:character = {
+				has_role = general 
+				this.commander_military_formation = {
+					has_mobilization_option = mobilization_option:mobilization_option_chemical_weapons
+				}
+			}
+			opposite_battle_side = {
+				OR = {
+					has_battle_condition = battle_condition_chemical_weapons_attack_2
+					has_battle_condition = battle_condition_chemical_weapons_attack_and_bombardment_2
+				}
+			}
+	}
+
+	weight = 1
+}
+
+
+battle_condition_chemical_weapons_attack_and_bombardment_2 = {
+	icon = "gfx/interface/icons/battle_conditions/battle_condition_chemical_weapons_attack_and_bombardment.dds"
+
+	modifier = {
+		unit_army_offense_mult = 11.5
+		unit_kill_rate_add = 2.0
+	}
+	
+	possible = {
+		scope:is_advancing_side = yes
+		exists = scope:character
+		scope:character = {
+			has_role = general 
+			this.commander_military_formation = {
+            	has_mobilization_option = mobilization_option:mobilization_option_chemical_weapons
+          	}
+		}
+		opposite_battle_side = {
+			has_battle_condition = battle_condition_chemical_weapons_defense_2
+		}
+	}
+
+	weight = {
+		value = 0
+		if = {
+			limit = {
+				scope:character = { 
+					has_role = general
+					commander_military_formation = {
+						formation_army_unit_type_fraction = {  
+							target = unit_type:combat_unit_type_shrapnel_artillery
+							value >= 0.1  
+						}
+					}
+				}
+			}
+			add = 30
+		}
+		if = {
+			limit = {
+				scope:character = { 
+					has_role = general
+					commander_military_formation = {
+						formation_army_unit_type_fraction = {  
+							target = unit_type:combat_unit_type_siege_artillery
+							value >= 0.1
+						}
+					}
+				}
+			}
+			add = 35
+		}
+		multiply = {
+			value = 1
+			scope:character = {
+				add = modifier:character_battle_condition_chemical_weapons_attack_and_bombardment_mult
+			}
+			min = 0
+		}
+		if = {
+			limit = {
+				opposite_battle_side = {
+					has_battle_condition = battle_condition_chemical_weapons_defense_2
+				}
+			}
+			multiply = 2
+		}
+		if = {
+			limit = {
+				has_battle_condition = battle_condition_primitive_combined_arms
+			}
+			multiply = 0.5
+		}
+	}
+}

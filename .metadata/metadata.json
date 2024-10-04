@@ -1,0 +1,12 @@
+{
+  "name" : "Victoria2 Style Trench Warefare",
+	"id" : "",
+  "version" : "",
+  "supported_game_version" : "",
+  "short_description" : "",
+  "tags" : [],
+  "relationships" : [],
+  "game_custom_data" : {
+    "multiplayer_synchronized" : true
+  }
+}

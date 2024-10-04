@@ -1,0 +1,26 @@
+﻿character_battle_condition_charge_after_a_successful_bombardment_mult={
+	decimals=0
+	color=good
+	percent=yes
+	game_data={
+		ai_value=0
+	}
+}
+
+character_battle_condition_chemical_weapons_attack_and_bombardment_mult={
+	decimals=0
+	color=good
+	percent=yes
+	game_data={
+		ai_value=0
+	}
+}
+
+character_battle_condition_dug_in_with_machinegun_mult={
+	decimals=0
+	color=good
+	percent=yes
+	game_data={
+		ai_value=0
+	}
+}

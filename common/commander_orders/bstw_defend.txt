@@ -1,0 +1,35 @@
+﻿defend_dig_in = {
+    texture = "gfx/interface/icons/commander_order_icons/defend.dds"
+    
+    military_type = army
+    ai_usage = defend
+
+	visible = {
+		has_role = general
+	}
+
+    possible = {
+		has_role = general
+    	OR = {
+    		has_trait = basic_defensive_strategist
+            has_trait = experienced_defensive_strategist
+            has_trait = expert_defensive_strategist
+    	}
+    }
+
+    modifier = {
+        unit_defense_mult = 0.15
+        unit_supply_consumption_mult = 0.2
+        character_battle_condition_dug_in_mult = 1
+        character_battle_condition_dug_in_with_machinegun_mult = 1 #mod
+    }
+
+    entity_animation = "defend"
+    clicksound = "event:/SFX/UI/Military/order_general_front_defend"
+    experience = 0.1 # This much extra experience per week while executing Order
+
+
+    ai_weight = {
+        value = 2
+    }
+}

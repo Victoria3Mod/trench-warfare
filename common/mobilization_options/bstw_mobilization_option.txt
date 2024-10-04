@@ -1,0 +1,155 @@
+﻿#mod
+mobilization_option_handcranked_machinegunners = {
+	texture = "gfx/interface/icons/mobilization_options/handcranked_machinegunners.dds"
+
+	possible = {
+		NOT = { scope:military_formation = { has_mobilization_option = mobilization_option:mobilization_option_machinegunners } }
+		market ?= {
+			mg:ammunition ?= {
+				market_goods_sell_orders > 0
+			}
+		}
+	}
+	
+	on_activate_while_mobilized = {
+		custom_tooltip = {
+			text = mobilization_option_it_hurts_organization_when_you_adjust_equipment_tt
+			add_organization = {
+				value = organization
+				multiply = -0.5
+			}
+		}
+	}
+	
+	on_deactivate = {
+		custom_tooltip = {
+			text = mobilization_option_it_hurts_organization_when_you_adjust_equipment_tt
+			add_organization = {
+				value = organization
+				multiply = -0.5
+			}
+		}
+	}
+	
+	unlocking_technologies = {
+		handcranked_machine_gun
+	}
+	upkeep_modifier = {
+		goods_input_small_arms_add = 1
+		goods_input_ammunition_add = 1
+	}
+	unit_modifier = {
+		unit_defense_add = 15
+		unit_kill_rate_add = 0.05
+	}
+	ai_weight = {
+		value = 3
+
+		if = {
+			limit = { 
+				has_technology_researched = automatic_machine_guns
+			}
+			add = -3
+		}
+	}
+
+    group = special_weapons
+}
+
+mobilization_option_machinegunners = {
+	texture = "gfx/interface/icons/mobilization_options/machinegunners.dds"
+
+	possible = {
+		NOT = { scope:military_formation = { has_mobilization_option = mobilization_option:mobilization_option_handcranked_machinegunners } }
+		market ?= {
+			mg:ammunition ?= {
+				market_goods_sell_orders > 0
+			}
+		}
+	}
+	
+	on_activate_while_mobilized = {
+		custom_tooltip = {
+			text = mobilization_option_it_hurts_organization_when_you_adjust_equipment_tt
+			add_organization = {
+				value = organization
+				multiply = -0.5
+			}
+		}
+	}
+	
+	on_deactivate = {
+		custom_tooltip = {
+			text = mobilization_option_it_hurts_organization_when_you_adjust_equipment_tt
+			add_organization = {
+				value = organization
+				multiply = -0.5
+			}
+		}
+	}
+	
+	unlocking_technologies = {
+		automatic_machine_guns
+	}
+	upkeep_modifier = {
+		goods_input_small_arms_add = 1
+		goods_input_ammunition_add = 2
+	}
+	unit_modifier = {
+		unit_defense_add = 25
+		unit_kill_rate_add = 0.10
+	}
+	ai_weight = {
+		value = 4
+	}
+
+    group = special_weapons
+}
+
+mobilization_option_chemical_weapons = {
+	texture = "gfx/interface/icons/mobilization_options/chemical_weapons.dds"
+
+	possible = {
+		market ?= {
+			mg:fertilizer ?= {
+				market_goods_sell_orders > 0
+			}
+		}
+	}
+	
+	on_activate_while_mobilized = {
+		custom_tooltip = {
+			text = mobilization_option_it_hurts_organization_when_you_adjust_equipment_tt
+			add_organization = {
+				value = organization
+				multiply = -0.5
+			}
+		}
+	}
+	
+	on_deactivate = {
+		custom_tooltip = {
+			text = mobilization_option_it_hurts_organization_when_you_adjust_equipment_tt
+			add_organization = {
+				value = organization
+				multiply = -0.5
+			}
+		}
+	}
+	
+	unlocking_technologies = {
+		chemical_warfare
+	}
+	upkeep_modifier = {
+		goods_input_fertilizer_add = 2
+	}
+	unit_modifier = {
+		unit_offense_add = 20
+		unit_recovery_rate_add = -0.2
+	}
+	ai_weight = {
+		value = 1
+	}
+
+    group = special_weapons
+}
