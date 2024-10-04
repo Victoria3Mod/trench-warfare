@@ -673,7 +673,7 @@ battle_condition_chemical_weapons_defense_2 = {
 		unit_army_defense_mult = 0.2
 		unit_morale_loss_mult = -0.1
 		unit_recovery_rate_add = 0.1
-		unit_kill_rate_add = 0.2
+		unit_kill_rate_add = 0.4
 	}
 	
 	instant_switch = {
