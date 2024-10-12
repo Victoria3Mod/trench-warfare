@@ -114,8 +114,8 @@ battle_condition_dug_in_with_machinegun = { #defender only
 
 	modifier = {
 		unit_morale_loss_mult = -0.1
-		unit_army_defense_mult = 50.0
-		unit_kill_rate_add = 1.0
+		unit_army_defense_mult = 0.25
+		unit_kill_rate_add = 0.3
 	}
 	
 	possible = {
@@ -186,7 +186,7 @@ battle_condition_charge_after_a_successful_bombardment = {
 	icon = "gfx/interface/icons/battle_conditions/battle_condition_charge_after_a_successful_bombardment.dds"
 
 	modifier = {
-		unit_army_offense_mult = 45.0
+		unit_army_offense_mult = 0.15
 		unit_kill_rate_add = 0.3
 	}
 
@@ -295,7 +295,7 @@ battle_condition_primitive_combined_arms = {
 	icon = "gfx/interface/icons/battle_conditions/battle_condition_primitive_combined_arms.dds"
 
 	modifier = {
-		unit_army_offense_mult = 55.0
+		unit_army_offense_mult = 0.4
 		unit_kill_rate_add = 0.3
 	}
 
@@ -382,8 +382,8 @@ battle_condition_chemical_weapons_attack = {
 	icon = "gfx/interface/icons/battle_conditions/battle_condition_chemical_weapons_attack.dds"
 
 	modifier = {
-		unit_army_offense_mult = 70.0
-		unit_kill_rate_add = 2.0
+		unit_army_offense_mult = 0.2
+		unit_kill_rate_add = 0.3
 	}
 	
 	possible = {
@@ -476,10 +476,10 @@ battle_condition_chemical_weapons_defense = {
 	icon = "gfx/interface/icons/battle_conditions/battle_condition_chemical_weapons_defense.dds"
 
 	modifier = {
-		unit_army_defense_mult = 120.0
+		unit_army_defense_mult = 0.2
 		unit_morale_loss_mult = -0.1
-		unit_recovery_rate_add = 1.5
-		unit_kill_rate_add = 1.0
+		unit_recovery_rate_add = 0.2
+		unit_kill_rate_add = 0.3
 	}
 	
 	instant_switch = {
@@ -505,8 +505,8 @@ battle_condition_chemical_weapons_attack_and_bombardment = {
 	icon = "gfx/interface/icons/battle_conditions/battle_condition_chemical_weapons_attack_and_bombardment.dds"
 
 	modifier = {
-		unit_army_offense_mult = 115.0
-		unit_kill_rate_add = 2.0
+		unit_army_offense_mult = 0.3
+		unit_kill_rate_add = 0.3
 	}
 	
 	possible = {
@@ -584,8 +584,8 @@ battle_condition_chemical_weapons_attack_2 = {
 	icon = "gfx/interface/icons/battle_conditions/battle_condition_chemical_weapons_attack.dds"
 
 	modifier = {
-		unit_army_offense_mult = 7.0
-		unit_kill_rate_add = 2.0
+		unit_army_offense_mult = 0.3
+		unit_kill_rate_add = 0.4
 	}
 	
 	possible = {
@@ -670,10 +670,10 @@ battle_condition_chemical_weapons_defense_2 = {
 	icon = "gfx/interface/icons/battle_conditions/battle_condition_chemical_weapons_defense.dds"
 
 	modifier = {
-		unit_army_defense_mult = 12.0
+		unit_army_defense_mult = 0.2
 		unit_morale_loss_mult = -0.1
-		unit_recovery_rate_add = 1.5
-		unit_kill_rate_add = 1.0
+		unit_recovery_rate_add = 0.1
+		unit_kill_rate_add = 0.4
 	}
 	
 	instant_switch = {
@@ -699,8 +699,8 @@ battle_condition_chemical_weapons_attack_and_bombardment_2 = {
 	icon = "gfx/interface/icons/battle_conditions/battle_condition_chemical_weapons_attack_and_bombardment.dds"
 
 	modifier = {
-		unit_army_offense_mult = 11.5
-		unit_kill_rate_add = 2.0
+		unit_army_offense_mult = 0.3
+		unit_kill_rate_add = 0.6
 	}
 	
 	possible = {
