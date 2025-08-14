@@ -3,10 +3,12 @@ mobilization_option_handcranked_machinegunners = {
 	texture = "gfx/interface/icons/mobilization_options/handcranked_machinegunners.dds"
 
 	possible = {
-		NOT = { scope:military_formation = { has_mobilization_option = mobilization_option:mobilization_option_machinegunners } }
+		NOT = { 
+			scope:military_formation = { has_mobilization_option = mobilization_option:mobilization_option_machinegunners } 
+		}
 		market ?= {
 			mg:ammunition ?= {
-				market_goods_sell_orders > 0
+				has_potential_supply = yes
 			}
 		}
 	}
@@ -20,7 +22,7 @@ mobilization_option_handcranked_machinegunners = {
 			}
 		}
 	}
-	
+
 	on_deactivate = {
 		custom_tooltip = {
 			text = mobilization_option_it_hurts_organization_when_you_adjust_equipment_tt
@@ -60,10 +62,12 @@ mobilization_option_machinegunners = {
 	texture = "gfx/interface/icons/mobilization_options/machinegunners.dds"
 
 	possible = {
-		NOT = { scope:military_formation = { has_mobilization_option = mobilization_option:mobilization_option_handcranked_machinegunners } }
+		NOT = { 
+			scope:military_formation = { has_mobilization_option = mobilization_option:mobilization_option_handcranked_machinegunners }
+		}
 		market ?= {
 			mg:ammunition ?= {
-				market_goods_sell_orders > 0
+				has_potential_supply = yes
 			}
 		}
 	}
@@ -77,7 +81,7 @@ mobilization_option_machinegunners = {
 			}
 		}
 	}
-	
+
 	on_deactivate = {
 		custom_tooltip = {
 			text = mobilization_option_it_hurts_organization_when_you_adjust_equipment_tt
@@ -100,11 +104,12 @@ mobilization_option_machinegunners = {
 		unit_kill_rate_add = 0.2
 	}
 	ai_weight = {
-		value = 4
+		value = 1
 	}
 
     group = special_weapons
 }
+
 
 mobilization_option_chemical_weapons = {
 	texture = "gfx/interface/icons/mobilization_options/chemical_weapons.dds"
@@ -112,11 +117,11 @@ mobilization_option_chemical_weapons = {
 	possible = {
 		market ?= {
 			mg:fertilizer ?= {
-				market_goods_sell_orders > 0
+				has_potential_supply = yes
 			}
 		}
 	}
-	
+
 	on_activate_while_mobilized = {
 		custom_tooltip = {
 			text = mobilization_option_it_hurts_organization_when_you_adjust_equipment_tt
@@ -126,7 +131,7 @@ mobilization_option_chemical_weapons = {
 			}
 		}
 	}
-	
+
 	on_deactivate = {
 		custom_tooltip = {
 			text = mobilization_option_it_hurts_organization_when_you_adjust_equipment_tt
@@ -136,7 +141,7 @@ mobilization_option_chemical_weapons = {
 			}
 		}
 	}
-	
+
 	unlocking_technologies = {
 		chemical_warfare
 	}
@@ -145,6 +150,7 @@ mobilization_option_chemical_weapons = {
 	}
 	unit_modifier = {
 		unit_offense_add = 10
+		unit_kill_rate_add = 0.5
 		unit_recovery_rate_add = -0.2
 	}
 	ai_weight = {
@@ -154,17 +160,19 @@ mobilization_option_chemical_weapons = {
     group = special_weapons
 }
 
+
+
 mobilization_option_flamethrowers = {
 	texture = "gfx/interface/icons/mobilization_options/flamethrowers.dds"
 
 	possible = {
 		market ?= {
 			mg:oil ?= {
-				market_goods_sell_orders > 0
+				has_potential_supply = yes
 			}
 		}
 	}
-	
+
 	on_activate_while_mobilized = {
 		custom_tooltip = {
 			text = mobilization_option_it_hurts_organization_when_you_adjust_equipment_tt
@@ -174,7 +182,7 @@ mobilization_option_flamethrowers = {
 			}
 		}
 	}
-	
+
 	on_deactivate = {
 		custom_tooltip = {
 			text = mobilization_option_it_hurts_organization_when_you_adjust_equipment_tt
@@ -184,7 +192,7 @@ mobilization_option_flamethrowers = {
 			}
 		}
 	}
-	
+
 	unlocking_technologies = {
 		flamethrowers
 	}
