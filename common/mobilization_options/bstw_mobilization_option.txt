@@ -41,8 +41,8 @@ mobilization_option_handcranked_machinegunners = {
 		goods_input_ammunition_add = 1
 	}
 	unit_modifier = {
-		unit_defense_add = 5
-		unit_kill_rate_add = 0.1
+		unit_defense_add = 7
+		unit_kill_rate_add = 0.3
 	}
 	ai_weight = {
 		value = 3
@@ -100,8 +100,8 @@ mobilization_option_machinegunners = {
 		goods_input_ammunition_add = 1
 	}
 	unit_modifier = {
-		unit_defense_add = 12
-		unit_kill_rate_add = 0.2
+		unit_defense_add = 15
+		unit_kill_rate_add = 0.6
 	}
 	ai_weight = {
 		value = 1
@@ -150,7 +150,7 @@ mobilization_option_chemical_weapons = {
 	}
 	unit_modifier = {
 		unit_offense_add = 10
-		unit_kill_rate_add = 0.5
+		unit_kill_rate_add = 0.2
 		unit_recovery_rate_add = -0.2
 	}
 	ai_weight = {
