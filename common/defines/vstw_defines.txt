@@ -1,4 +1,4 @@
 ﻿NMilitary = {
-	BATTLE_CONDITION_MIN_TICKS_BETWEEN_UPDATE_DEFAULT = 4	# Unless otherwise specified on the battle condition type, battle conditions will not update until at least this many ticks has passed
+	BATTLE_CONDITION_MIN_TICKS_BETWEEN_UPDATE_DEFAULT = 30	# Unless otherwise specified on the battle condition type, battle conditions will not update until at least this many ticks has passed
 	BATTLE_CONDITION_CHANCE_TO_UPDATE_PER_EXTRA_TICK = 0.10 # For each tick that has passed since the minimum number of ticks, this chance to refresh battle conditions (i.e. 13 ticks after min, there's 13% chance of switching)
 }
